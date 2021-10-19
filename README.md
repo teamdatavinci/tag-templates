@@ -4,6 +4,6 @@ The folder structure is as follows
 
 ## Tag Template Folder
 ### |___README
-### |___template.tpl
+### |___template.json
 
 
