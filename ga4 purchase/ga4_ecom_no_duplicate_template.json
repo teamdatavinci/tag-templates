@@ -1,0 +1,378 @@
+{
+    "exportFormatVersion": 2,
+    "exportTime": "2021-10-19 20:58:24",
+    "containerVersion": {
+        "path": "accounts/6002964837/containers/42460096/versions/0",
+        "accountId": "6002964837",
+        "containerId": "42460096",
+        "containerVersionId": "0",
+        "container": {
+            "path": "accounts/6002964837/containers/42460096",
+            "accountId": "6002964837",
+            "containerId": "42460096",
+            "name": "test",
+            "publicId": "GTM-K54NB2X",
+            "usageContext": [
+                "WEB"
+            ],
+            "fingerprint": "1616591217203",
+            "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6002964837/containers/42460096/workspaces?apiLink=container"
+        },
+        "tag": [
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "tagId": "6",
+                "name": "Ecom ID Set",
+                "type": "html",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "html",
+                        "value": "<script>\n  (function () {\n   window.localStorage.setItem(\"transId\",\"{{GA4 Ecom Transaction ID}}\");\n})();\n</script>"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "supportDocumentWrite",
+                        "value": "false"
+                    }
+                ],
+                "fingerprint": "1634675685981",
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "tagId": "8",
+                "name": "GA4 - Configuration",
+                "type": "gaawc",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "sendPageView",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "measurementId",
+                        "value": "G-9JLMCMNZ61"
+                    }
+                ],
+                "fingerprint": "1634675685979",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "tagId": "12",
+                "name": "GA4 Event - Purchase",
+                "type": "gaawe",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "eventName",
+                        "value": "purchase"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "eventParameters",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "items"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{Ecommerce Items}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "value"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{GA4 ecom value}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "transaction_id"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{GA4 Ecom Transaction ID}}"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "name",
+                                        "value": "currency"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "USD"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TAG_REFERENCE",
+                        "key": "measurementId",
+                        "value": "GA4 - Configuration"
+                    }
+                ],
+                "fingerprint": "1634675714443",
+                "firingTriggerId": [
+                    "7"
+                ],
+                "teardownTag": [
+                    {
+                        "tagName": "Ecom ID Set",
+                        "stopTeardownOnFailure": true
+                    }
+                ],
+                "tagFiringOption": "ONCE_PER_EVENT",
+                "monitoringMetadata": {
+                    "type": "MAP"
+                },
+                "consentSettings": {
+                    "consentStatus": "NOT_SET"
+                }
+            }
+        ],
+        "trigger": [
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "triggerId": "7",
+                "name": "Purchase Custom Trigger",
+                "type": "CUSTOM_EVENT",
+                "customEventFilter": [
+                    {
+                        "type": "EQUALS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{_event}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "purchase_"
+                            }
+                        ]
+                    }
+                ],
+                "filter": [
+                    {
+                        "type": "CONTAINS",
+                        "parameter": [
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg0",
+                                "value": "{{trans_truth}}"
+                            },
+                            {
+                                "type": "TEMPLATE",
+                                "key": "arg1",
+                                "value": "true"
+                            },
+                            {
+                                "type": "BOOLEAN",
+                                "key": "negate",
+                                "value": "true"
+                            }
+                        ]
+                    }
+                ],
+                "fingerprint": "1634675685978"
+            }
+        ],
+        "variable": [
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "variableId": "3",
+                "name": "GA4 Ecom Transaction ID",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.transactionId"
+                    }
+                ],
+                "fingerprint": "1634675685977",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "variableId": "4",
+                "name": "transaction_id",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function(){\n\nreturn window.localStorage.getItem(\"transId\");\n\n}"
+                    }
+                ],
+                "fingerprint": "1634675685980",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "variableId": "5",
+                "name": "trans_truth",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function(){\n\nvar a;\n  if({{transaction_id}}){\nif({{transaction_id}}=={{GA4 Ecom Transaction ID}}){a=\"true\"}\n}\nreturn a;\n\n}"
+                    }
+                ],
+                "fingerprint": "1634675685981",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "variableId": "9",
+                "name": "GA4 ecom value",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.value"
+                    }
+                ],
+                "fingerprint": "1634675685979",
+                "formatValue": {}
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "variableId": "10",
+                "name": "Ecommerce Items",
+                "type": "v",
+                "parameter": [
+                    {
+                        "type": "INTEGER",
+                        "key": "dataLayerVersion",
+                        "value": "2"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "key": "setDefaultValue",
+                        "value": "false"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "name",
+                        "value": "ecommerce.items"
+                    }
+                ],
+                "fingerprint": "1634675685979",
+                "formatValue": {}
+            }
+        ],
+        "builtInVariable": [
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "type": "PAGE_URL",
+                "name": "Page URL"
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "type": "PAGE_HOSTNAME",
+                "name": "Page Hostname"
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "type": "PAGE_PATH",
+                "name": "Page Path"
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "type": "REFERRER",
+                "name": "Referrer"
+            },
+            {
+                "accountId": "6002964837",
+                "containerId": "42460096",
+                "type": "EVENT",
+                "name": "Event"
+            }
+        ],
+        "fingerprint": "1634677104286",
+        "tagManagerUrl": "https://tagmanager.google.com/#/versions/accounts/6002964837/containers/42460096/versions/0?apiLink=version"
+    }
+}
